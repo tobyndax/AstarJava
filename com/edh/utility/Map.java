@@ -9,7 +9,7 @@ public class Map{
 							,{0,0,1,0,0}
 							,{0,0,1,0,0}
 							,{0,0,0,0,0}};
-	public void Map(){};
+	public Map(){};
 	
 	public void printMap(){
 		for(int i = 0; i < xSize; i++){
