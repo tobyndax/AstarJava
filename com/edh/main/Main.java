@@ -1,8 +1,9 @@
-import src.Map.*;
+package com.edh.main;
+import com.edh.utility.*;
 class Main{
 
 	public static void main(String[] args){	
-		src.Map.Map mappy = new src.Map.Map();
+		Map mappy = new Map();
 		mappy.printMap();
 	}	
 }

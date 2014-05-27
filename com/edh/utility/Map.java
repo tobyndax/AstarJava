@@ -1,4 +1,4 @@
-package src.Map;
+package com.edh.utility;
 
 public class Map{
 	public static int xSize = 5; 
