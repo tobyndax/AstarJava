@@ -56,7 +56,18 @@ public class Node implements Comparable<Node>{
         open.addToList(this);
         
     }
+//----------------------------------------------
 
+	public int getOpenSize(){
+		return open.size();
+	}
+
+//----------------------------------------------
+	
+	public int getClosedSize(){
+		return closed.size();
+	}
+	
 //----------------------------------------------
     //constructor for all consecutive nodes.
     public Node(Node inNode,int inX,int inY){
@@ -157,8 +168,8 @@ public class Node implements Comparable<Node>{
                     return;
                     
                 }
-                //if inpassable terrain add node to closedlist.
-                if(map.getSection(xPos+dx,yPos+dy) == 1){
+                //if inpassable terrain add node to closedlist if it is not already there.
+                if(map.getSection(xPos+dx,yPos+dy) == 1 && closed.getNode(xPos+dx,yPos+dy) == null){
                     closed.addToList(new Node(this,xPos+dx,yPos+dy));//add to closed list if non-walkable
 					continue;
                 }

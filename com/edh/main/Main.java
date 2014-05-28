@@ -10,5 +10,9 @@ class Main{
         long finishTime = System.nanoTime();
         long elapsedTime = (finishTime - startTime)/(1000*1000);
         System.out.println("Time for execution: " + elapsedTime + " ms");
+		System.out.println("Number of open nodes at end: " + noddy.getOpenSize());
+		
+		System.out.println("Number of closed nodes at end: " + noddy.getClosedSize());
+		System.out.println("Total number of nodes: " + 20*40);
     }
 }

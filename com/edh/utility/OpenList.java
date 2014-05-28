@@ -37,8 +37,11 @@ public class OpenList{
     public void resort(){
         Collections.sort(theList);
     }
-    
-
+	
+//----------------------------------------------
+	public int size(){
+		return theList.size();
+	}
     
 //----------------------------------------------
 
@@ -54,6 +57,7 @@ public class OpenList{
         }
         return null;
     }
+
     
 //----------------------------------------------
     
