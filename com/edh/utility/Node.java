@@ -14,18 +14,8 @@ public class Node implements Comparable<Node>{
 	private int hCost;
     private Node parent;
     static private OpenList open;
+    static private ClosedList closed;
     
-    
-//----------------------------------------------
-    
-    public Node(Node inNode,int inX,int inY){
-        xPos = inX;
-        yPos = inY;
-        parent = inNode;
-		
-		calculateFCost();
-    }
-
     
 //----------------------------------------------
     
@@ -47,8 +37,8 @@ public class Node implements Comparable<Node>{
     }
     
 //----------------------------------------------
-    
-    public Node(int xStart, int yStart, int inxStop, int inyStop){
+    //Constructor for first node.
+    public Node(int xStart, int yStart, int inxStop, int inyStop,int xSize,int ySize){
         xPos = xStart;
         yPos = yStart;
 		xStart = xStart; 
@@ -56,10 +46,22 @@ public class Node implements Comparable<Node>{
 		xStop = inxStop;
 		yStop = inyStop;
         
-        OpenList open = new OpenList(6*6);
+        OpenList open = new OpenList();
+        ClosedList closed = new ClosedList();
         
     }
 
+//----------------------------------------------
+    //constructor for all consecutive nodes.
+    public Node(Node inNode,int inX,int inY){
+        xPos = inX;
+        yPos = inY;
+        parent = inNode;
+		
+		calculateFCost();
+    }
+
+    
 //----------------------------------------------
     
 	private void calculateFCost(){
@@ -109,7 +111,22 @@ public class Node implements Comparable<Node>{
 		}
 		return false;
 	}
+//----------------------------------------------
+    private void branch(){
+        for(int dx = -1; dx < 2; dx++){
+            for(int dy = -1; dy < 2; dy++){
+                if(open.getNode(xPos+dx,yPos+dy) == null && closed.getNode(xPos+dx,yPos+dy) == null){
+                    open.addToList(new Node(this,xPos+dx,yPos+dy));
+                }
+            }
+        }
+        open.removeNode(this);
+        closed.addToList(this);
+    }
     
+    
+//----------------------------------------------
+//  Accessors
 //----------------------------------------------
 	
     public void setCost(int inCost){

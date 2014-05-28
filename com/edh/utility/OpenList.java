@@ -3,31 +3,49 @@ import com.edh.utility.Node;
 import java.util.*;
 
 public class OpenList{
-    static int MAXSIZE;
-    private List<Node> openList = new ArrayList<Node>();
+    private List<Node> theList = new ArrayList<Node>();
     
     
 //----------------------------------------------
     
-    public OpenList(int size){
-        MAXSIZE = size;
+    public OpenList(){
     }
     
 //----------------------------------------------
     
     public void addToList(Node inNode){
-        openList.add(inNode);
-        Collections.sort(openList);
+        theList.add(inNode);
+        Collections.sort(theList);
+    }
+    
+//----------------------------------------------
+
+    public void removeNode(Node inNode){
+        theList.remove(inNode);
+        Collections.sort(theList);
+    }
+    
+//----------------------------------------------
+
+    
+    public Node getNode(int xPos,int yPos){
+        for(int i = 0; i< theList.size();i++ ){
+            if(theList.get(i).getX() == xPos && theList.get(i).getY() == yPos){
+                return theList.get(i);
+            }
+        }
+        return null;
     }
     
 //----------------------------------------------
     
+    
     public void printList(){
-        for(int i = 0; i < openList.size(); i++){
-            if (openList.get(i) == null){
+        for(int i = 0; i < theList.size(); i++){
+            if (theList.get(i) == null){
                 break;
             }else{
-                System.out.println(openList.get(i).getCost());
+                System.out.println(theList.get(i).getCost());
             }
         }
     }
