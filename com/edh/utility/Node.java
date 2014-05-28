@@ -120,7 +120,10 @@ public class Node implements Comparable<Node>{
     
 //----------------------------------------------
     public void chooseBranchPoint(){
-        open.getBestNode().branch();
+        if(open.getBestNode() == null){
+			map.printMap();
+		}
+		open.getBestNode().branch();
     }
     
     
@@ -141,7 +144,12 @@ public class Node implements Comparable<Node>{
     public void branch(){
         for(int dx = -1; dx < 2; dx++){
             for(int dy = -1; dy < 2; dy++){
-                if(!map.withinBounds(xPos+dx,yPos+dy)){
+			
+                if(dx == 0 && dy == 0){
+				continue;
+				}
+				
+				if(!map.withinBounds(xPos+dx,yPos+dy)){
                     continue;
                 }
                 //if we can reach stop from here return the path.
@@ -153,6 +161,7 @@ public class Node implements Comparable<Node>{
                 //if inpassable terrain add node to closedlist.
                 if(map.getSection(xPos+dx,yPos+dy) == 1){
                     closed.addToList(new Node(this,xPos+dx,yPos+dy));//add to closed list if non-walkable
+					continue;
                 }
                 //if node open but cheaper to reach from here update it's parent to this.
                 //and update it's cost
@@ -162,7 +171,7 @@ public class Node implements Comparable<Node>{
                }
                 //if node does not exist on open or closed list. add it to the open list.
                 if(open.getNode(xPos+dx,yPos+dy) == null && closed.getNode(xPos+dx,yPos+dy) == null){
-                    open.addToList(new Node(this,xPos+dx,yPos+dy));
+					open.addToList(new Node(this,xPos+dx,yPos+dy));
                 }
             }
         }

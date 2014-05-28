@@ -27,7 +27,11 @@ public class OpenList{
     
 //----------------------------------------------
     public Node getBestNode(){
-        return theList.get(0);
+        if(theList.size() == 0 ){
+			System.out.println("No more open nodes");
+			return null;
+		}
+		return theList.get(0);
     }
     
 //----------------------------------------------
