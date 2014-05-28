@@ -15,14 +15,12 @@ public class OpenList{
     
     public void addToList(Node inNode){
         theList.add(inNode);
-        Collections.sort(theList);
     }
     
 //----------------------------------------------
 
     public void removeNode(Node inNode){
         theList.remove(inNode);
-        Collections.sort(theList);
     }
     
 //----------------------------------------------
@@ -31,6 +29,7 @@ public class OpenList{
 			System.out.println("No more open nodes");
 			return null;
 		}
+        Collections.sort(theList);
 		return theList.get(0);
     }
 	

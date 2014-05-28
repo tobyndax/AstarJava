@@ -74,8 +74,6 @@ public class Node implements Comparable<Node>{
         calculateGCost();
         calculateHCost();
         cost = gCost + hCost;
-		open.resort();
-        
     }
     
 //----------------------------------------------

@@ -5,15 +5,15 @@
       location = "container:com/edh/utility/Node.java">
    </FileRef>
    <FileRef
-      location = "group:../../Programmering/JavaTests/com/edh/main/Main.java">
-   </FileRef>
-   <FileRef
-      location = "group:../../Programmering/JavaTests/com/edh/utility/Map.java">
-   </FileRef>
-   <FileRef
       location = "group:com/edh/utility/OpenList.java">
    </FileRef>
    <FileRef
       location = "group:com/edh/utility/ClosedList.java">
+   </FileRef>
+   <FileRef
+      location = "group:com/edh/main/Main.java">
+   </FileRef>
+   <FileRef
+      location = "group:com/edh/utility/Map.java">
    </FileRef>
 </Workspace>
