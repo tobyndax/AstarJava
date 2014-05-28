@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:com/edh/utility/Node.java">
+   </FileRef>
+   <FileRef
+      location = "group:../../Programmering/JavaTests/com/edh/main/Main.java">
+   </FileRef>
+   <FileRef
+      location = "group:../../Programmering/JavaTests/com/edh/utility/Map.java">
+   </FileRef>
+   <FileRef
+      location = "group:com/edh/utility/OpenList.java">
+   </FileRef>
+</Workspace>

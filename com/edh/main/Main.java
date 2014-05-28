@@ -4,7 +4,8 @@ class Main{
 
 	public static void main(String[] args){	
 		Map mappy = new Map();
-        Node noddy = new Node(1,2,5,5);
-		mappy.printMap();
+        Node noddy = new Node(0,2,5,5);
+        Node noddy2 = new Node(noddy,1,3);
+        
 	}	
 }
