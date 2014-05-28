@@ -33,6 +33,13 @@ public class OpenList{
 		}
 		return theList.get(0);
     }
+	
+//----------------------------------------------
+    public void resort(){
+        Collections.sort(theList);
+    }
+    
+
     
 //----------------------------------------------
 

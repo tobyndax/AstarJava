@@ -74,6 +74,7 @@ public class Node implements Comparable<Node>{
         calculateGCost();
         calculateHCost();
         cost = gCost + hCost;
+		open.resort();
         
     }
     
@@ -167,7 +168,7 @@ public class Node implements Comparable<Node>{
                 //and update it's cost
                 
                 if(open.getNode(xPos+dx,yPos+dy) != null && open.getNode(xPos+dx,yPos+dy).parent.gCost > gCost){
-                    open.getNode(xPos+dx,yPos+dy).parent = this;
+                    open.getNode(xPos+dx,yPos+dy).setParent(this);
                }
                 //if node does not exist on open or closed list. add it to the open list.
                 if(open.getNode(xPos+dx,yPos+dy) == null && closed.getNode(xPos+dx,yPos+dy) == null){
