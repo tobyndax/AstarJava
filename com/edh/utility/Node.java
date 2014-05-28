@@ -13,8 +13,10 @@ public class Node implements Comparable<Node>{
 	private int gCost;
 	private int hCost;
     private Node parent;
-    static private OpenList open;
-    static private ClosedList closed;
+    
+    static private Map map;
+    static private OpenList open = new OpenList();
+    static private ClosedList closed = new ClosedList();
     
     
 //----------------------------------------------
@@ -38,16 +40,20 @@ public class Node implements Comparable<Node>{
     
 //----------------------------------------------
     //Constructor for first node.
-    public Node(int xStart, int yStart, int inxStop, int inyStop,int xSize,int ySize){
-        xPos = xStart;
-        yPos = yStart;
-		xStart = xStart; 
-		yStart = yStart;
+    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap){
+        xPos = inxStart;
+        yPos = inyStart;
+		xStart = inxStart;
+		yStart = inyStart;
 		xStop = inxStop;
 		yStop = inyStop;
+        map = inMap;
         
-        OpenList open = new OpenList();
-        ClosedList closed = new ClosedList();
+        map.setSection(inxStart,inyStart,2);
+        map.setSection(inxStop,inyStop,8);
+        map.printMap();
+        
+        open.addToList(this);
         
     }
 
@@ -111,24 +117,74 @@ public class Node implements Comparable<Node>{
 		}
 		return false;
 	}
+    
 //----------------------------------------------
-    private void branch(){
+    public void chooseBranchPoint(){
+        open.getBestNode().branch();
+    }
+    
+    
+//----------------------------------------------
+    public void getPath(){
+        if(xPos == xStart && yPos == yStart){
+            map.printMap();
+            return;
+        }
+        map.setSection(xPos,yPos,6);
+        parent.getPath();
+    }
+    
+    
+    
+    
+//----------------------------------------------
+    public void branch(){
         for(int dx = -1; dx < 2; dx++){
             for(int dy = -1; dy < 2; dy++){
+                if(!map.withinBounds(xPos+dx,yPos+dy)){
+                    continue;
+                }
+                //if we can reach stop from here return the path.
+                if(xPos+dx == xStop && yPos+dy == yStop){
+                    getPath();
+                    return;
+                    
+                }
+                //if inpassable terrain add node to closedlist.
+                if(map.getSection(xPos+dx,yPos+dy) == 1){
+                    closed.addToList(new Node(this,xPos+dx,yPos+dy));//add to closed list if non-walkable
+                }
+                //if node open but cheaper to reach from here update it's parent to this.
+                //and update it's cost
+                
+                if(open.getNode(xPos+dx,yPos+dy) != null && open.getNode(xPos+dx,yPos+dy).parent.gCost > gCost){
+                    open.getNode(xPos+dx,yPos+dy).parent = this;
+               }
+                //if node does not exist on open or closed list. add it to the open list.
                 if(open.getNode(xPos+dx,yPos+dy) == null && closed.getNode(xPos+dx,yPos+dy) == null){
                     open.addToList(new Node(this,xPos+dx,yPos+dy));
                 }
             }
         }
+        //move this node to closed list.
         open.removeNode(this);
         closed.addToList(this);
+        chooseBranchPoint();
     }
     
     
 //----------------------------------------------
 //  Accessors
 //----------------------------------------------
-	
+
+    public void setParent(Node inNode){
+        parent = inNode;
+        calculateFCost();
+    }
+
+    
+//----------------------------------------------
+    
     public void setCost(int inCost){
         cost = inCost;
     }

@@ -26,9 +26,17 @@ public class OpenList{
     }
     
 //----------------------------------------------
+    public Node getBestNode(){
+        return theList.get(0);
+    }
+    
+//----------------------------------------------
 
     
     public Node getNode(int xPos,int yPos){
+        if(theList.size() == 0){
+            return null;
+        }
         for(int i = 0; i< theList.size();i++ ){
             if(theList.get(i).getX() == xPos && theList.get(i).getY() == yPos){
                 return theList.get(i);
