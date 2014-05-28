@@ -1,4 +1,4 @@
 JavaTests
 =========
 
-Test environment for java
+Small A-star project for teaching myself Java. 
