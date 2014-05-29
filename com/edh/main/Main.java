@@ -15,6 +15,6 @@ class Main{
 		System.out.println("Number of open nodes at end: " + noddy.getOpenSize());
 		
 		System.out.println("Number of closed nodes at end: " + noddy.getClosedSize());
-		System.out.println("Total number of nodes: " + 20*40);
+		System.out.println("Total number of nodes: " + mappy.getSize());
     }
 }

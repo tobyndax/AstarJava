@@ -132,6 +132,7 @@ public class Node{// implements Comparable<Node>{
     public void chooseBranchPoint(){
         if(open.getBestNode() == null){
 			map.printMap();
+			return;
 		}
 		open.getBestNode().branch();
     }
