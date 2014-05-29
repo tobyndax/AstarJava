@@ -3,7 +3,17 @@ import com.edh.utility.Node;
 import java.util.*;
 
 public class OpenList{
-    private List<Node> theList = new ArrayList<Node>();
+    private PriorityQueue<Node> theList = new PriorityQueue<Node>(10,new Comparator<Node>(){
+        public int compare(Node a, Node b){
+            if(a.getCost() > b.getCost()){
+                return 1;
+            }
+            if(b.getCost() > a.getCost()){
+                return -1;
+            }
+            return 0;
+        }
+    });
     
     
 //----------------------------------------------
@@ -26,16 +36,16 @@ public class OpenList{
 //----------------------------------------------
     public Node getBestNode(){
         if(theList.size() == 0 ){
-			System.out.println("No more open nodes");
+			System.out.println("No more open nodes, no way to finish found.");
 			return null;
 		}
-        Collections.sort(theList);
-		return theList.get(0);
+        //Collections.sort(theList);
+        return theList.peek();
     }
 	
 //----------------------------------------------
     public void resort(){
-        Collections.sort(theList);
+        //Collections.sort(theList);
     }
 	
 //----------------------------------------------
@@ -47,12 +57,12 @@ public class OpenList{
 
     
     public Node getNode(int xPos,int yPos){
-        if(theList.size() == 0){
-            return null;
-        }
-        for(int i = 0; i< theList.size();i++ ){
-            if(theList.get(i).getX() == xPos && theList.get(i).getY() == yPos){
-                return theList.get(i);
+        
+        Iterator<Node> it = theList.iterator();
+        while(it.hasNext()){
+            Node element = it.next();
+            if(element.getX() == xPos && element.getY() == yPos){
+                return element;
             }
         }
         return null;
@@ -63,15 +73,12 @@ public class OpenList{
     
     
     public void printList(){
-        for(int i = 0; i < theList.size(); i++){
-            if (theList.get(i) == null){
-                break;
-            }else{
-                System.out.println(theList.get(i).getCost());
-            }
+        Iterator<Node> it = theList.iterator();
+        while(it.hasNext()){
+            Node element = it.next();
+            System.out.println(element.getCost());
         }
     }
-    
 //----------------------------------------------
     
 }

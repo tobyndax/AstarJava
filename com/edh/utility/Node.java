@@ -2,7 +2,7 @@ package com.edh.utility;
 import java.util.*;
 import com.edh.utility.*;
 
-public class Node implements Comparable<Node>{
+public class Node{// implements Comparable<Node>{
 	private int xPos;
     private int yPos;
 	static private int xStart;
@@ -25,7 +25,7 @@ public class Node implements Comparable<Node>{
     //standard sorting algorithms of java.Collections
     //what does this do in null case?
     
-    
+/*
     public int compareTo(Node node) {
         if (cost == node.cost){
             return 0;
@@ -37,7 +37,7 @@ public class Node implements Comparable<Node>{
             return -1;
         }
     }
-    
+*/
 //----------------------------------------------
     //Constructor for first node.
     public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap){
@@ -130,9 +130,11 @@ public class Node implements Comparable<Node>{
     
 //----------------------------------------------
     public void chooseBranchPoint(){
+        /*
         if(open.getBestNode() == null){
 			map.printMap();
-		}
+		}*/
+        System.out.println("x: " + xPos + " y: " + yPos);
 		open.getBestNode().branch();
     }
     
@@ -171,7 +173,7 @@ public class Node implements Comparable<Node>{
                 //if inpassable terrain add node to closedlist if it is not already there.
                 if(map.getSection(xPos+dx,yPos+dy) == 1 && closed.getNode(xPos+dx,yPos+dy) == null){
                     closed.addToList(new Node(this,xPos+dx,yPos+dy));//add to closed list if non-walkable
-					continue;
+                    continue;
                 }
                 //if node open but cheaper to reach from here update it's parent to this.
                 //and update it's cost
@@ -181,7 +183,7 @@ public class Node implements Comparable<Node>{
                }
                 //if node does not exist on open or closed list. add it to the open list.
                 if(open.getNode(xPos+dx,yPos+dy) == null && closed.getNode(xPos+dx,yPos+dy) == null){
-					open.addToList(new Node(this,xPos+dx,yPos+dy));
+                    open.addToList(new Node(this,xPos+dx,yPos+dy));
                 }
             }
         }
@@ -198,7 +200,10 @@ public class Node implements Comparable<Node>{
 
     public void setParent(Node inNode){
         parent = inNode;
+        open.removeNode(this);
         calculateFCost();
+        
+        open.addToList(this);
     }
 
     
