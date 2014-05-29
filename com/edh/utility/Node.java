@@ -130,11 +130,9 @@ public class Node{// implements Comparable<Node>{
     
 //----------------------------------------------
     public void chooseBranchPoint(){
-        /*
         if(open.getBestNode() == null){
 			map.printMap();
-		}*/
-        System.out.println("x: " + xPos + " y: " + yPos);
+		}
 		open.getBestNode().branch();
     }
     
@@ -142,7 +140,6 @@ public class Node{// implements Comparable<Node>{
 //----------------------------------------------
     public void getPath(){
         if(xPos == xStart && yPos == yStart){
-            map.printMap();
             return;
         }
         map.setSection(xPos,yPos,6);
