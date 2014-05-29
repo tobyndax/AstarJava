@@ -4,8 +4,17 @@ import java.util.*;
 
 public class ClosedList extends OpenList{
     
-    private List<Node> theList = new ArrayList<Node>();
-    
+    private SortedSet<Node> theList = new TreeSet<Node>(new Comparator<Node>(){
+        public int compare(Node a, Node b){
+            if(a.getCost() > b.getCost()){
+                return 1;
+            }
+            if(b.getCost() > a.getCost()){
+                return -1;
+            }
+            return 0;
+        }
+    });
 //----------------------------------------------
     public ClosedList(){
         super();

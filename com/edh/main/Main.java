@@ -3,12 +3,14 @@ import com.edh.utility.*;
 class Main{
 
 	public static void main(String[] args){	
-		long startTime = System.nanoTime();
+		
         Map mappy = new Map();
         Node noddy = new Node(1,1,19,39,20,40,mappy);
-        noddy.branch();
+        long startTime = System.nanoTime();
+		noddy.branch();
         long finishTime = System.nanoTime();
         long elapsedTime = (finishTime - startTime)/(1000*1000);
+		mappy.printMap();
         System.out.println("Time for execution: " + elapsedTime + " ms");
 		System.out.println("Number of open nodes at end: " + noddy.getOpenSize());
 		
