@@ -16,4 +16,10 @@
    <FileRef
       location = "group:com/edh/utility/Map.java">
    </FileRef>
+   <FileRef
+      location = "group:com/edh/graphics/DrawPanel.java">
+   </FileRef>
+   <FileRef
+      location = "group:make.bash">
+   </FileRef>
 </Workspace>

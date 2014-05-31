@@ -6,4 +6,5 @@ if [ ! -d "cls" ]; then
 fi
 
 javac $1 -d ./cls com/edh/utility/*.java
+javac $1 -d ./cls com/edh/graphics/*.java
 javac $1 -d ./cls com/edh/main/*.java && java -cp ./cls com.edh.main.Main
