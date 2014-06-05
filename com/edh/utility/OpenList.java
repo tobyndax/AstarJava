@@ -16,8 +16,8 @@ public class OpenList{
     });
     
 //----------------------------------------------
-    protected Map map;
-    
+    private Map map;
+    private int type = 3;
 //----------------------------------------------
     
     public OpenList(){
@@ -27,7 +27,13 @@ public class OpenList{
     
     public void addToList(Node inNode){
         theList.add(inNode);
-        map.setSection(inNode.getX(),inNode.getY(),3);
+        map.setSection(inNode.getX(),inNode.getY(),type);
+        map.redraw();
+        try {
+            Thread.sleep(10);
+        } catch(InterruptedException ex) {
+            
+        }
     }
     
 //----------------------------------------------

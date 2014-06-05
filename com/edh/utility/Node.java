@@ -15,6 +15,7 @@ public class Node{// implements Comparable<Node>{
     private Node parent;
     
     static private Map map;
+    static private Map mapGraph;
     static private OpenList open = new OpenList();
     static private ClosedList closed = new ClosedList();
     
@@ -40,7 +41,7 @@ public class Node{// implements Comparable<Node>{
 */
 //----------------------------------------------
     //Constructor for first node.
-    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap, Map graphMap){
+    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap, Map inGraphMap){
         xPos = inxStart;
         yPos = inyStart;
 		xStart = inxStart;
@@ -48,8 +49,9 @@ public class Node{// implements Comparable<Node>{
 		xStop = inxStop;
 		yStop = inyStop;
         map = inMap;
-        open.setMap(graphMap);
-        closed.setMap(graphMap);
+        mapGraph = inGraphMap;
+        open.setMap(inGraphMap);
+        closed.setMap(inGraphMap);
         
         map.setSection(inxStart,inyStart,2);
         map.setSection(inxStop,inyStop,8);
@@ -146,6 +148,7 @@ public class Node{// implements Comparable<Node>{
             return;
         }
         map.setSection(xPos,yPos,6);
+        mapGraph.setSection(xPos,yPos,6);
         parent.getPath();
     }
     
@@ -188,6 +191,7 @@ public class Node{// implements Comparable<Node>{
             }
         }
         //move this node to closed list.
+        System.out.println("x: " + getX() + " y: " + getY());
         open.removeNode(this);
         closed.addToList(this);
         chooseBranchPoint();

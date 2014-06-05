@@ -1,8 +1,12 @@
 package com.edh.utility;
+import com.edh.graphics.*;
 
 public class Map{
+    
+    public DrawPanel panel;
 	public static int xSize = 20;
 	public static int ySize = 40;
+    
 //----------------------------------------------
 	private int[][] map = 	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 							,{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}
@@ -28,6 +32,20 @@ public class Map{
     
 //----------------------------------------------
 	public Map(){};
+    
+//----------------------------------------------
+    
+    public void setPanel(DrawPanel inPanel){
+        panel = inPanel;
+    };
+    
+//----------------------------------------------
+	
+    public void redraw(){
+        if(panel != null){
+        panel.repaint();
+        }
+    };
     
 //----------------------------------------------
 	public int getSize(){
