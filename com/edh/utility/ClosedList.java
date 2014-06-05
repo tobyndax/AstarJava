@@ -19,4 +19,10 @@ public class ClosedList extends OpenList{
     public ClosedList(){
         super();
     }
+    
+@Override
+    public void addToList(Node inNode){
+        theList.add(inNode);
+        map.setSection(inNode.getX(),inNode.getY(),4);
+    }
 }

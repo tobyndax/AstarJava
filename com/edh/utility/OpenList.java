@@ -1,5 +1,5 @@
 package com.edh.utility;
-import com.edh.utility.Node;
+import com.edh.utility.*;
 import java.util.*;
 
 public class OpenList{
@@ -15,6 +15,8 @@ public class OpenList{
         }
     });
     
+//----------------------------------------------
+    protected Map map;
     
 //----------------------------------------------
     
@@ -25,10 +27,18 @@ public class OpenList{
     
     public void addToList(Node inNode){
         theList.add(inNode);
+        map.setSection(inNode.getX(),inNode.getY(),3);
     }
     
 //----------------------------------------------
 
+    public void setMap(Map inMap){
+        map = inMap;
+    }
+    
+//----------------------------------------------
+
+    
     public void removeNode(Node inNode){
         theList.remove(inNode);
     }

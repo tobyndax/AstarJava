@@ -40,7 +40,7 @@ public class Node{// implements Comparable<Node>{
 */
 //----------------------------------------------
     //Constructor for first node.
-    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap){
+    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap, Map graphMap){
         xPos = inxStart;
         yPos = inyStart;
 		xStart = inxStart;
@@ -48,6 +48,8 @@ public class Node{// implements Comparable<Node>{
 		xStop = inxStop;
 		yStop = inyStop;
         map = inMap;
+        open.setMap(graphMap);
+        closed.setMap(graphMap);
         
         map.setSection(inxStart,inyStart,2);
         map.setSection(inxStop,inyStop,8);
