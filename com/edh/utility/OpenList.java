@@ -1,5 +1,5 @@
 package com.edh.utility;
-import com.edh.utility.Node;
+import com.edh.utility.*;
 import java.util.*;
 
 public class OpenList{
@@ -15,25 +15,48 @@ public class OpenList{
         }
     });
     
-    
-//----------------------------------------------
+    //----------------------------------------------
+    private Map map;
+    private int type = 3;
+    //----------------------------------------------
     
     public OpenList(){
     }
     
-//----------------------------------------------
+    //----------------------------------------------
     
     public void addToList(Node inNode){
         theList.add(inNode);
+        if(map.getSection(inNode.getX(),inNode.getY()) == 2){
+            return;
+        }
+        else if(map.getSection(inNode.getX(),inNode.getY()) == 8){
+            return;
+        }else{
+            map.setSection(inNode.getX(),inNode.getY(),type);
+            map.redraw();
+            try {
+                Thread.sleep(10);
+            } catch(InterruptedException ex) {
+                
+            }
+        }
     }
     
-//----------------------------------------------
-
+    //----------------------------------------------
+    
+    public void setMap(Map inMap){
+        map = inMap;
+    }
+    
+    //----------------------------------------------
+    
+    
     public void removeNode(Node inNode){
         theList.remove(inNode);
     }
     
-//----------------------------------------------
+    //----------------------------------------------
     public Node getBestNode(){
         if(theList.size() == 0 ){
 			System.out.println("No more open nodes, no way to finish found.");
@@ -43,18 +66,18 @@ public class OpenList{
         return theList.peek();
     }
 	
-//----------------------------------------------
+    //----------------------------------------------
     public void resort(){
         //Collections.sort(theList);
     }
 	
-//----------------------------------------------
+    //----------------------------------------------
 	public int size(){
 		return theList.size();
 	}
     
-//----------------------------------------------
-
+    //----------------------------------------------
+    
     
     public Node getNode(int xPos,int yPos){
         
@@ -67,9 +90,9 @@ public class OpenList{
         }
         return null;
     }
-
     
-//----------------------------------------------
+    
+    //----------------------------------------------
     
     
     public void printList(){
@@ -79,6 +102,6 @@ public class OpenList{
             System.out.println(element.getCost());
         }
     }
-//----------------------------------------------
+    //----------------------------------------------
     
 }
