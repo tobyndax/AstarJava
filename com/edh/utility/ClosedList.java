@@ -26,7 +26,19 @@ public class ClosedList{
     
     public void addToList(Node inNode){
         theList.add(inNode);
-        map.setSection(inNode.getX(),inNode.getY(),type);
+        if(map.getSection(inNode.getX(),inNode.getY()) == 1){
+            map.setSection(inNode.getX(),inNode.getY(),12);
+            
+        }
+        else if(map.getSection(inNode.getX(),inNode.getY()) == 8){
+            return;
+        }
+        else if(map.getSection(inNode.getX(),inNode.getY()) == 2){
+            return;
+        }
+        else{
+            map.setSection(inNode.getX(),inNode.getY(),type);
+        }
         map.redraw();
         try {
             Thread.sleep(10);

@@ -14,9 +14,6 @@ class Main{
     
 	public static void main(String[] args){
 		
-        
-        
-        
         Map mappy = new Map();
         Map mapGraph = new Map();
         
@@ -26,14 +23,6 @@ class Main{
         Node noddy = new Node(1,1,19,39,20,40,mappy,mapGraph);
         noddy.branch();
         
-        
-        
-        long startTime = System.nanoTime();
-        
-        long finishTime = System.nanoTime();
-        long elapsedTime = (finishTime - startTime)/(1000*1000);
-        mappy.printMap();
-        System.out.println("Time for execution: " + elapsedTime + " ms");
         System.out.println("Number of open nodes at end: " + noddy.getOpenSize());
         
         System.out.println("Number of closed nodes at end: " + noddy.getClosedSize());
