@@ -1,7 +1,7 @@
 package com.edh.utility;
 import com.edh.graphics.*;
 
-public class Map{
+public class MyMap{
     
     public DrawPanel panel;
 	public static int xSize = 40;
@@ -52,7 +52,7 @@ public class Map{
     ,{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
     
     //----------------------------------------------
-	public Map(){};
+	public MyMap(){};
     
     //----------------------------------------------
     

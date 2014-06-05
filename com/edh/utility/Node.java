@@ -14,8 +14,8 @@ public class Node{// implements Comparable<Node>{
 	private int hCost;
     private Node parent;
     
-    static private Map map;
-    static private Map mapGraph;
+    static private MyMap map;
+    static private MyMap mapGraph;
     static private OpenList open = new OpenList();
     static private ClosedList closed = new ClosedList();
     
@@ -41,7 +41,7 @@ public class Node{// implements Comparable<Node>{
      */
     //----------------------------------------------
     //Constructor for first node.
-    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,Map inMap, Map inGraphMap){
+    public Node(int inxStart, int inyStart, int inxStop, int inyStop,int xSize,int ySize,MyMap inMap, MyMap inGraphMap){
         xPos = inxStart;
         yPos = inyStart;
 		xStart = inxStart;
@@ -169,12 +169,7 @@ public class Node{// implements Comparable<Node>{
         }
         map.setSection(xPos,yPos,6);
         mapGraph.setSection(xPos,yPos,6);
-        try {
-            Thread.sleep(10);
-        } catch(InterruptedException ex) {
-            
-        }
-        mapGraph.redraw();
+        mapGraph.panel.path.add(this);
         parent.getPath();
     }
     
@@ -234,6 +229,11 @@ public class Node{// implements Comparable<Node>{
         
         open.addToList(this);
     }
+    
+    public Node getParent(){
+        return parent;
+    }
+
     
     
     //----------------------------------------------

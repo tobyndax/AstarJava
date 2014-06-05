@@ -11,10 +11,10 @@
       location = "group:com/edh/utility/ClosedList.java">
    </FileRef>
    <FileRef
-      location = "group:com/edh/main/Main.java">
+      location = "group:com/edh/utility/MyMap.java">
    </FileRef>
    <FileRef
-      location = "group:com/edh/utility/Map.java">
+      location = "group:com/edh/main/Main.java">
    </FileRef>
    <FileRef
       location = "group:com/edh/graphics/DrawPanel.java">
