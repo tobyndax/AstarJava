@@ -57,7 +57,6 @@ public class Node{// implements Comparable<Node>{
         map.setSection(inxStop,inyStop,8);
         mapGraph.setSection(inxStart,inyStart,2);
         mapGraph.setSection(inxStop,inyStop,8);
-        map.printMap();
         
         open.addToList(this);
         

@@ -18,9 +18,9 @@ class Main{
         Map mapGraph = new Map();
         
         System.out.println("Yo");
-        DrawPanel panel = new DrawPanel(600,300,mapGraph);
+        DrawPanel panel = new DrawPanel(600,600,mapGraph);
         mapGraph.setPanel(panel);
-        Node noddy = new Node(1,1,19,39,20,40,mappy,mapGraph);
+        Node noddy = new Node(1,1,39,39,40,40,mappy,mapGraph);
         noddy.branch();
         
         System.out.println("Number of open nodes at end: " + noddy.getOpenSize());
