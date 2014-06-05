@@ -14,8 +14,8 @@ class Main{
     
 	public static void main(String[] args){
 		
-        Map mappy = new Map();
-        Map mapGraph = new Map();
+        MyMap mappy = new MyMap();
+        MyMap mapGraph = new MyMap();
         
         System.out.println("Yo");
         DrawPanel panel = new DrawPanel(600,600,mapGraph);

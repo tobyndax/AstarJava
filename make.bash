@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 clear
 if [ ! -d "cls" ]; then

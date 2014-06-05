@@ -16,7 +16,7 @@ public class OpenList{
     });
     
     //----------------------------------------------
-    private Map map;
+    private MyMap map;
     private int type = 3;
     //----------------------------------------------
     
@@ -36,7 +36,7 @@ public class OpenList{
             map.setSection(inNode.getX(),inNode.getY(),type);
             map.redraw();
             try {
-                Thread.sleep(10);
+                Thread.sleep(2);
             } catch(InterruptedException ex) {
                 
             }
@@ -45,7 +45,7 @@ public class OpenList{
     
     //----------------------------------------------
     
-    public void setMap(Map inMap){
+    public void setMap(MyMap inMap){
         map = inMap;
     }
     

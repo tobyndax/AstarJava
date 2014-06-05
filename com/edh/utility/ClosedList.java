@@ -15,7 +15,7 @@ public class ClosedList{
         }
     });
     
-    private Map map;
+    private MyMap map;
     private int type = 4;
     //----------------------------------------------
     
@@ -41,7 +41,7 @@ public class ClosedList{
         }
         map.redraw();
         try {
-            Thread.sleep(10);
+            Thread.sleep(2);
         } catch(InterruptedException ex) {
         
         }
@@ -49,7 +49,7 @@ public class ClosedList{
     
     //----------------------------------------------
     
-    public void setMap(Map inMap){
+    public void setMap(MyMap inMap){
         map = inMap;
     }
     
