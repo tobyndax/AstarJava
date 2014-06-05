@@ -190,6 +190,8 @@ public class Node{// implements Comparable<Node>{
                 }
                 //if we can reach stop from here return the path.
                 if(xPos+dx == xStop && yPos+dy == yStop){
+                    open.addToList(new Node(this,xPos+dx,yPos+dy));
+                    mapGraph.panel.path.add(open.getNode(xStop,yStop));
                     getPath();
                     return;
                     
