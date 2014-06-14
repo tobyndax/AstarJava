@@ -2,7 +2,7 @@ package com.edh.utility;
 import java.util.*;
 import com.edh.utility.*;
 
-public class Node{// implements Comparable<Node>{
+public class Node extends Thread{// implements Comparable<Node>{
 	private int xPos;
     private int yPos;
 	static private int xStart;
@@ -162,14 +162,26 @@ public class Node{// implements Comparable<Node>{
     }
     
     
+    
+  //----------------------------------------------
+    public void run() {
+        branch();
+    }
     //----------------------------------------------
     public void getPath(){
         if(xPos == xStart && yPos == yStart){
-            return;
+            
+			return;
         }
         map.setSection(xPos,yPos,6);
         mapGraph.setSection(xPos,yPos,6);
         mapGraph.panel.path.add(this);
+		mapGraph.redraw();
+		try {
+                Thread.sleep(4);
+            } catch(InterruptedException ex) {
+                
+            }
         parent.getPath();
     }
     
